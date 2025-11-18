@@ -24,6 +24,7 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\ActionGroup;
+use App\Filament\Resources\OrderResource\RelationManagers\AddressRelationManager;
 
 class OrderResource extends Resource
 {
@@ -186,13 +187,19 @@ class OrderResource extends Resource
             ])
             ->actions([
                 ActionGroup::make([
-                    ViewAction::make(),
+                    ViewAction::make(),     
                     EditAction::make(),
                 ]),
             ])
             ->bulkActions([
                 DeleteBulkAction::make(), // ✅ Fixed bulk action
             ]);
+    }
+    public static function getRelations(): array
+    {
+        return [
+        AddressRelationManager::class,
+        ];
     }
 
     public static function getNavigationBadge(): ?string
