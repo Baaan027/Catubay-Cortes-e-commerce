@@ -1,13 +1,17 @@
 <?php
 
 namespace App\Livewire;
-
+use Livewire\Attributes\Title;
 use Livewire\Component;
+use App\Models\Category;
 
+#[Title('Categories - LAZZAAPPEE')]
 class CategoriesPage extends Component
 {
     public function render()
     {
-        return view('livewire.categories-page');
+        $categories = Category::where('is_active', 1)->get();
+        return view('livewire.categories-page'
+        , ['categories'=>$categories]);
     }
 }
