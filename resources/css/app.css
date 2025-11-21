@@ -1,14 +1,12 @@
-@import "tailwindcss";
-@import "../../node_modules/preline/variants.css";
-/* Preline UI */
-@import "../../node_modules/preline/variants.css";
-@source "../../node_modules/preline/dist/*.js";
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&display=swap');
 
-/* Plugins */
-/* @plugin "@tailwindcss/forms"; */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "plugins/forms";
-@import "plugins/typography";
+body {
+    font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+}
 
 
 
