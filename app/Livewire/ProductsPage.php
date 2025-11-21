@@ -8,6 +8,9 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Helpers\CartManagement;
+use App\Livewire\Partials\Navbar;
+// LivewireAlert package not compatible with this project's PHP/Laravel versions; removed import.
 
 #[Title('Products - LAZZAAPPEE')]
 class ProductsPage extends Component
@@ -29,6 +32,17 @@ class ProductsPage extends Component
 
     #[Url]
     public $sort = 'latest';
+
+    //add product to cart method
+    public function addToCart($product_id)
+    {
+        $total_count = CartManagement::addItemToCart($product_id);
+
+        $this->dispatch('update-cart-count', total_count: $total_count)->to(Navbar::class);
+
+        session()->flash('success', 'Product added to cart successfully!');
+    }
+      
 
     public function render()
     {
